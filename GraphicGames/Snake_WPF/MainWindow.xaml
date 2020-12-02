@@ -1,0 +1,48 @@
+﻿<Window x:Class="SnakeGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnakeGame"
+        mc:Ignorable="d"
+        Title="SSSSSSnake" Height="450" Width="800">
+    <Grid x:Name="Main">
+        <Canvas x:Name="gameHolder" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="792" Height="401">
+            <Canvas.Background>
+                <ImageBrush ImageSource="Assets/Earth.png">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                    <ImageBrush.Transform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.Transform>
+                </ImageBrush>
+            </Canvas.Background>
+        </Canvas>
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="Game">
+                <MenuItem Header="Start" Name="Start" Click="Start_Click"/>
+                <MenuItem Header="Quit" Name="Quit" Click="Quit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Pause" Name="Pause" Click="Pause_Click" Visibility="Collapsed"/>
+                <MenuItem Header="Restart" Name="Restart" Click="Restart_Click"/>
+            </MenuItem>
+            <MenuItem Header="Mode">
+                <MenuItem Header="Easy" Name="Easy" Click="Easy_Click"/>
+                <MenuItem Header="Medium" Name="Medium" Click="Medium_Click"/>
+                <MenuItem Header="Hard" Name="Hard" Click="Hard_Click"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
