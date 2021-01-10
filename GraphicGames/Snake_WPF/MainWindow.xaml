@@ -38,11 +38,6 @@
                 <MenuItem Header="Pause" Name="Pause" Click="Pause_Click" Visibility="Collapsed"/>
                 <MenuItem Header="Restart" Name="Restart" Click="Restart_Click"/>
             </MenuItem>
-            <MenuItem Header="Mode">
-                <MenuItem Header="Easy" Name="Easy" Click="Easy_Click"/>
-                <MenuItem Header="Medium" Name="Medium" Click="Medium_Click"/>
-                <MenuItem Header="Hard" Name="Hard" Click="Hard_Click"/>
-            </MenuItem>
         </Menu>
     </Grid>
 </Window>
