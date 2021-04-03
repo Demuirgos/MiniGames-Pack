@@ -2,6 +2,7 @@ from Pawn import Actor
 from pygame.math import Vector2
 from pygame.transform import rotate
 from Helpers import load_sprite
+import datetime
 
 class Ship(Actor):
     def __init__(self, position, sprite = None, direction = Vector2(0, -1), size = (23,30), speed = Vector2(0)):
@@ -22,18 +23,24 @@ class Ship(Actor):
         surface.blit(rotate(self.sprite, angle), blit_position)
 
 class Plane(Ship):
+    status = False
     def __init__(self, shootingHandler, position):
         self.shootingEvent = shootingHandler
+        self.dt = datetime.datetime.now()
         super().__init__(position = position, sprite = load_sprite("Ship"))
 
     def shoot(self):
-        return self.shootingEvent(Rocket(self,(self.position.x,self.position.y)))
+        time = datetime.datetime.now() - self.dt
+        if time.total_seconds() >= 0.25 or self.status == False:
+            self.status = True
+            self.dt = datetime.datetime.now()
+            self.shootingEvent(Rocket(self,(self.position.x,self.position.y)))
 
 
 class Rocket(Ship):
     def __init__(self, ship, position):
         self.alive = True
-        super().__init__(position = position, sprite = load_sprite("Bullet"), direction = Vector2(ship.direction), size = (10,20), speed = Vector2(ship.direction) * 3)
+        super().__init__(position = position, sprite = load_sprite("Bullet"), direction = Vector2(ship.direction), size = (7,15), speed = Vector2(ship.direction) * 3)
 
     def move(self, canvas):
         self.position += self.velocity
